@@ -1,0 +1,60 @@
+<section class="skills">
+  <h1
+    class="skills-title"
+    data-aos="zoom-in"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-delay="600"
+    data-aos-once="true"
+  >
+    My Skills
+  </h1>
+
+  <div class="skils-level-container">
+    <mat-card
+      class="card"
+      *ngFor="let skill of skillsDB; let idx = index"
+      data-aos="fade"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      data-aos-delay="1000"
+      data-aos-once="true"
+    >
+      <div class="inner-card" [@flippingCard]="skill.animation">
+        <div class="inner-card-front">
+          <div class="img-container">
+            <img [src]="skill.img" [alt]="skill.title" />
+          </div>
+          <h2 class="card-title">
+            {{ skill.title }}
+            {{ +skill.progressLevel ? skill.progressLevel : value }}%
+          </h2>
+          <!-- 'hide-progress': hideProgress -->
+          <mat-progress-bar
+            #progressBar
+            [ngClass]="{
+              'html-progress': true,
+              'hide-progress': hideProgress
+            }"
+            [mode]="mode"
+            [value]="+skill.progressLevel ? skill.progressLevel : value"
+            [attr.data-id]="idx"
+          >
+          </mat-progress-bar>
+          <mat-icon class="flip" (click)="flipAnime(skill.id)">
+            autorenew
+          </mat-icon>
+        </div>
+        <div class="inner-card-back">
+          <h3 class="inner-card-back-title">{{ skill.title }}</h3>
+          <p class="inner-card-back-text">
+            {{ skill.text }}
+          </p>
+          <mat-icon class="flip back-flip" (click)="flipAnime(skill.id)">
+            autorenew
+          </mat-icon>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</section>

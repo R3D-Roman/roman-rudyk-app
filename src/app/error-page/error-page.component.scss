@@ -1,0 +1,50 @@
+@import "~src/config.scss";
+
+.error-page-wrapper {
+  width: 100%;
+  .error-page-title {
+    font-family: $font-Kaushan;
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 3rem;
+    span {
+      color: $secondary-color;
+      font-size: 2rem;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  }
+
+  .error-page-btn {
+    display: block;
+    background-color: rgb(182, 0, 182);
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: $white-color;
+    font-family: $font-Kaushan;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .error-page-img-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .error-page-wrapper {
+    .error-page-title {
+      font-size: 2rem;
+
+      span {
+        margin-top: 0;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

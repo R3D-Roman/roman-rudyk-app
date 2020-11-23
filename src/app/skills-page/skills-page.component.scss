@@ -1,0 +1,144 @@
+@import "~src/config.scss";
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: $secondary-color;
+}
+
+.html-progress.hide-progress ::ng-deep .mat-progress-bar-fill::after {
+  background-color: inherit;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background-color: rgb(180, 180, 180);
+}
+
+.skills {
+  text-align: center;
+  .skills-title {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    font-family: $font-Kaushan;
+  }
+
+  .skils-level-container {
+    margin-top: 2rem;
+    width: 100%;
+    @include flex(row, space-around, center);
+    flex-wrap: wrap;
+    .card {
+      width: 30%;
+      background-color: $primary-color;
+      @include flex(column, center, center);
+      color: $white-color;
+      margin: 1rem 0;
+      border-radius: 10px;
+      padding: 0;
+      box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
+
+      .inner-card {
+        min-height: 250px;
+        width: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+
+        .flip {
+          color: white;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+        }
+
+        .inner-card-front,
+        .inner-card-back {
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+          @include flex(column, center, center);
+          height: 100%;
+          width: 100%;
+          background-color: $primary-color;
+          border-radius: 10px;
+        }
+
+        .inner-card-front {
+          transform: rotateX(0deg);
+          z-index: 2;
+          .card-title {
+            margin-top: 1rem;
+            margin-bottom: 0.2rem;
+            font-family: $font-Kaushan;
+            font-size: 1rem;
+          }
+
+          .img-container {
+            width: 120px;
+            height: 120px;
+          }
+
+          .html-progress {
+            height: 15px;
+            width: 90%;
+          }
+        }
+        .inner-card-back {
+          transform: rotateX(180deg);
+          .inner-card-back-title {
+            font-size: 1.2rem;
+          }
+          .inner-card-back-text {
+            font-size: 0.9rem;
+            padding: 0 10px;
+          }
+
+          .back-flip {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .skills {
+    .skils-level-container {
+      .card {
+        width: 47%;
+
+        .inner-card {
+          .inner-card-front {
+            .html-progress {
+              height: 10px;
+            }
+          }
+          .inner-card-back {
+            .inner-card-back-text {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .skills {
+    .skils-level-container {
+      flex-direction: column;
+      .card {
+        width: 90%;
+        .inner-card {
+          .inner-card-front {
+            .html-progress {
+              height: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

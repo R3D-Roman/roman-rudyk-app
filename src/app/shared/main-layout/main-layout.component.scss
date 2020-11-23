@@ -1,0 +1,187 @@
+@import "~src/config.scss";
+
+.mobile-menu-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+
+  .first,
+  .second,
+  .third,
+  .fourth {
+    width: 100%;
+    background-color: $primary-color;
+  }
+}
+
+nav {
+  display: block;
+}
+
+.wrapper {
+  min-height: 100vh;
+  @include flex(column, none, none);
+  // max-width: 1900px;
+  // width: 100%;
+  // margin: 0 auto;
+}
+
+.toolbar {
+  background-color: $black-color;
+  color: $white-color;
+  justify-content: space-between;
+  min-height: 80px;
+
+  .menu-icon {
+    display: none;
+  }
+
+  .list {
+    padding: 0;
+    @include flex(row, space-between, center);
+
+    &-item {
+      color: $green-color;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: all 0.2s ease-in;
+      border-radius: 5px;
+      opacity: 1 !important;
+      outline: none;
+    }
+    &-item:hover {
+      background-color: $secondary-color;
+      color: $white-color;
+    }
+  }
+}
+
+.sticky-footer {
+  flex-grow: 1;
+}
+
+.footer {
+  color: $white-color;
+  min-height: 80px;
+  background-color: $black-color;
+  @include flex(column, center, center);
+
+  .social-media-container {
+    @include flex(row, center, center);
+    margin: 1rem 0;
+    .social-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .git-icon-container {
+      margin-right: 0.5rem;
+    }
+
+    .git-icon-container {
+      svg {
+        path {
+          fill: #633569;
+          transition: all 0.3s ease-in;
+        }
+      }
+    }
+
+    .git-icon-container:hover {
+      svg {
+        path {
+          fill: #a257ac;
+        }
+      }
+    }
+
+    .linkedin-icon-container {
+      svg {
+        circle {
+          fill: #007ab9;
+          transition: all 0.3s ease-in;
+        }
+      }
+    }
+
+    .linkedin-icon-container:hover {
+      svg {
+        circle {
+          fill: #019ce9;
+        }
+      }
+    }
+
+    .teamtree-icon-container {
+      width: 52px;
+      height: 52px;
+    }
+
+    .teamtree-icon-container {
+      svg {
+        path {
+          fill: #67b86e;
+          transition: all 0.3s ease-in;
+        }
+      }
+    }
+
+    .teamtree-icon-container:hover {
+      svg {
+        path {
+          fill: #7cdf85;
+          transition: all 0.3s ease-in;
+        }
+      }
+    }
+  }
+  .creator {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    justify-content: center;
+    position: relative;
+
+    .menu-icon {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      z-index: 100;
+      cursor: pointer;
+
+      .line {
+        height: 3px;
+        width: 40px;
+        background-color: $green-color;
+        margin: 5px 0;
+      }
+    }
+
+    nav {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      height: 100%;
+      .list {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+
+        .list-item {
+          border: none;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

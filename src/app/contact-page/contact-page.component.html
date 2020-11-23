@@ -1,0 +1,212 @@
+<section class="contact">
+  <h1
+    class="contact-title"
+    data-aos="fade-right"
+    data-aos-duration="700"
+    data-aos-easing="ease-in-out"
+    data-aos-delay="400"
+    data-aos-once="true"
+  >
+    Contact With Me
+  </h1>
+
+  <div
+    class="img-container"
+    data-aos="fade"
+    data-aos-duration="800"
+    data-aos-easing="ease-in-out"
+    data-aos-delay="900"
+    data-aos-once="true"
+  >
+    <img src="../../assets/img/contact/send-message-subscriber.svg" alt="" />
+  </div>
+  <mat-card
+    class="form-card"
+    data-aos="fade"
+    data-aos-duration="800"
+    data-aos-easing="ease-in-out"
+    data-aos-delay="1200"
+    data-aos-once="true"
+  >
+    <form
+      class="form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      [@contactFormSend]="isSend"
+      (@contactFormSend.done)="formAnimeDone($event)"
+      *ngIf="!afterSend; else afterSentContent"
+    >
+      <mat-form-field
+        [ngClass]="{
+          'my-form-field': true,
+          'success-underline': formName.valid && formName.touched,
+          'error-underline':
+            formName.invalid && formName.touched && formName.errors.required
+        }"
+        appearance="legacy"
+      >
+        <mat-label
+          [ngClass]="{
+            'label-normal-state': true,
+            success: formName.valid && formName.touched,
+            error:
+              formName.invalid && formName.touched && formName.errors.required
+          }"
+          >Name</mat-label
+        >
+        <input matInput placeholder="John Doh" formControlName="name" />
+        <mat-icon
+          matSuffix
+          [ngClass]="{
+            success: formName.valid && formName.touched,
+            error:
+              formName.invalid && formName.touched && formName.errors.required
+          }"
+          >sentiment_very_satisfied</mat-icon
+        >
+        <mat-error
+          *ngIf="
+            formName.invalid && formName.touched && formName.errors.required
+          "
+          >Please Enter Your Name</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="legacy"
+        [ngClass]="{
+          'my-form-field': true,
+          'success-underline': formEmail.valid && formEmail.touched,
+          'error-underline':
+            (formEmail.invalid &&
+              formEmail.touched &&
+              formEmail.errors.required) ||
+            (formEmail.invalid && formEmail.touched && formEmail.errors.email)
+        }"
+      >
+        <mat-label
+          [ngClass]="{
+            'label-normal-state': true,
+            success: formEmail.valid && formEmail.touched,
+            error:
+              (formEmail.invalid &&
+                formEmail.touched &&
+                formEmail.errors.required) ||
+              (formEmail.invalid && formEmail.touched && formEmail.errors.email)
+          }"
+          >Email</mat-label
+        >
+        <input matInput placeholder="pat@example.com" formControlName="email" />
+        <mat-icon
+          matSuffix
+          [ngClass]="{
+            success: formEmail.valid && formEmail.touched,
+            error:
+              (formEmail.invalid &&
+                formEmail.touched &&
+                formEmail.errors.required) ||
+              (formEmail.invalid && formEmail.touched && formEmail.errors.email)
+          }"
+          >email</mat-icon
+        >
+        <mat-error
+          *ngIf="
+            formEmail.invalid && formEmail.touched && formEmail.errors.email
+          "
+          >Please enter a valid email address</mat-error
+        >
+        <mat-error
+          *ngIf="
+            formEmail.invalid && formEmail.touched && formEmail.errors.required
+          "
+          >Email is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+      <mat-form-field
+        appearance="legacy"
+        [ngClass]="{
+          'my-form-field': true,
+          'success-underline': formMessage.valid && formMessage.touched,
+          'error-underline':
+            (formMessage.invalid &&
+              formMessage.touched &&
+              formMessage.errors.required) ||
+            (formMessage.invalid &&
+              formMessage.touched &&
+              formMessage.errors.minlength)
+        }"
+      >
+        <mat-label
+          [ngClass]="{
+            'label-normal-state': true,
+            success: formMessage.valid && formMessage.touched,
+            error:
+              (formMessage.invalid &&
+                formMessage.touched &&
+                formMessage.errors.required) ||
+              (formMessage.invalid &&
+                formMessage.touched &&
+                formMessage.errors.minlength)
+          }"
+          >Message</mat-label
+        >
+        <textarea
+          matInput
+          placeholder="Message here..."
+          formControlName="message"
+        ></textarea>
+        <mat-error
+          *ngIf="
+            formMessage.invalid &&
+            formMessage.touched &&
+            formMessage.errors.required
+          "
+          >Please fill the message field</mat-error
+        >
+        <mat-error
+          *ngIf="
+            formMessage.invalid &&
+            formMessage.touched &&
+            formMessage.errors.minlength
+          "
+          >Message has to be
+          {{ formMessage.errors.minlength.requiredLength }} characters! Now is
+          {{ formMessage.errors.minlength.actualLength }} characters!</mat-error
+        >
+      </mat-form-field>
+      <button
+        class="btn-submit"
+        mat-button
+        type="submit"
+        [disabled]="form.invalid || form.disabled"
+      >
+        Send
+      </button>
+    </form>
+    <!-- afterSentContent -->
+    <ng-template #afterSentContent>
+      <div class="after-message-header">
+        <h3>{{ messageInfo?.name }}</h3>
+        <h4 class="after-message-subtitle">
+          <a href="mailto: rudykroman01@gmail.com"
+            >My personal email address:
+            <span class="mail-after-send">rudykroman01@gmail.com</span></a
+          >
+        </h4>
+        <p>
+          Thank you for using my Message Form, but I can’t process your
+          information due to the new European policy
+          <a href="https://gdpr.eu/" target="_blank"
+            ><span class="gdpr-law">General Data Protection Regulation</span></a
+          >. Please, contact me via email provided above.
+        </p>
+      </div>
+      <div class="after-message-content">
+        <p>
+          Your message:<br />
+          {{ messageInfo?.message }}
+        </p>
+      </div>
+    </ng-template>
+  </mat-card>
+</section>

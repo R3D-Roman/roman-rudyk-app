@@ -1,0 +1,24 @@
+@import "~src/config.scss";
+
+.modal-content-container {
+  text-align: center;
+  position: relative;
+  color: #c5c5c5;
+
+  .modal-title {
+    font-family: $font-Kaushan;
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    cursor: pointer;
+    color: $secondary-color;
+    transition: all 0.3s ease-in;
+  }
+
+  .modal-close-btn:hover {
+    color: $green-color;
+  }
+}

@@ -1,0 +1,135 @@
+@import "~src/config.scss";
+
+.success {
+  color: #00f700;
+}
+
+.error {
+  color: red;
+}
+
+// Inputs colors
+
+.label-normal-state {
+  color: $title-color;
+}
+
+.label-normal-state.success {
+  color: #00f700;
+}
+
+.label-normal-state.error {
+  color: #ff0000;
+}
+
+::ng-deep.mat-form-field-underline {
+  background-color: $title-color !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: $secondary-color !important;
+}
+
+.my-form-field.success-underline ::ng-deep.mat-form-field-underline {
+  background-color: #00f700 !important;
+}
+
+.my-form-field.error-underline ::ng-deep.mat-form-field-underline {
+  background-color: #ff0000 !important;
+}
+
+.my-form-field.success-underline ::ng-deep.mat-form-field-ripple {
+  background-color: #00f700 !important;
+}
+
+.my-form-field.error-underline ::ng-deep.mat-form-field-ripple {
+  background-color: #ff0000 !important;
+}
+
+//End inputs colors
+
+input,
+input:focus,
+textarea,
+textarea:focus {
+  font-size: 1rem;
+}
+
+.contact {
+  .contact-title {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: $font-Kaushan;
+  }
+
+  .img-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  .form-card {
+    width: 500px;
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+    background-color: $primary-color;
+    box-shadow: 5px 3px 2px 5px rgba(0, 0, 0, 0.9);
+    .form {
+      @include flex(column, center, center);
+
+      mat-form-field {
+        margin: 0.7rem 0;
+        width: 100%;
+        color: $title-color;
+
+        input::placeholder,
+        textarea::placeholder {
+          color: $white-color;
+        }
+      }
+
+      .btn-submit {
+        background-color: $green-color;
+        font-weight: 500;
+        font-size: 1.3rem;
+        box-shadow: 10px 3px 5px rgba(12, 12, 12, 0.8);
+      }
+
+      .btn-submit:disabled {
+        background-color: $secondary-color;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .after-message-header,
+    .after-message-content,
+    .after-message-subtitle {
+      width: 100%;
+      color: $white-color;
+      text-align: center;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+
+    .after-message-header {
+      .mail-after-send {
+        color: $green-color;
+        font-family: $font-Kaushan;
+      }
+      .gdpr-law {
+        color: $secondary-color;
+        font-family: $font-Kaushan;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .contact {
+    .form-card {
+      width: 90%;
+    }
+  }
+}
